@@ -45,6 +45,7 @@ def pre_pipeline_preparation(*, dataframe: pd.DataFrame) -> pd.DataFrame:
     # 1 are available per passenger
     data["cabin"] = data["cabin"].apply(get_first_cabin)
 
+    # extract title from name variable
     data["title"] = data["name"].apply(get_title)
 
     # cast numerical variables as floats
@@ -52,7 +53,7 @@ def pre_pipeline_preparation(*, dataframe: pd.DataFrame) -> pd.DataFrame:
     data["age"] = data["age"].astype("float")
 
     # drop unnecessary variables
-    data.drop(labels=config.model_config.unused_fields, axis=1, inplace=True)
+    data.drop(columns=config.model_configs.unused_fields, inplace=True)
 
     return data
 
@@ -78,7 +79,7 @@ def save_pipeline(*, pipeline_to_persist: Pipeline) -> None:
     """
 
     # Prepare versioned save file name
-    save_file_name = f"{config.app_config.pipeline_save_file}{_version}.pkl"
+    save_file_name = f"{config.app_configs.pipeline_save_file}{_version}.pkl"
     save_path = TRAINED_MODEL_DIR / save_file_name
 
     remove_old_pipelines(files_to_keep=[save_file_name])

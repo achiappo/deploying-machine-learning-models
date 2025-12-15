@@ -12,7 +12,7 @@ def validate_inputs(*, input_data: pd.DataFrame) -> Tuple[pd.DataFrame, Optional
     """Check model inputs for unprocessable values."""
 
     pre_processed = pre_pipeline_preparation(dataframe=input_data)
-    validated_data = pre_processed[config.model_config.features].copy()
+    validated_data = pre_processed[config.model_configs.features].copy()
     errors = None
 
     try:
@@ -27,18 +27,19 @@ def validate_inputs(*, input_data: pd.DataFrame) -> Tuple[pd.DataFrame, Optional
 
 
 class TitanicDataInputSchema(BaseModel):
-    pclass: Optional[int]
-    name: Optional[str]
-    sex: Optional[str]
-    age: Optional[int]
-    sibsp: Optional[int]
-    parch: Optional[int]
-    ticket: Optional[int]
-    fare: Optional[float]
-    cabin: Optional[str]
-    embarked: Optional[str]
-    boat: Optional[Union[str, int]]
-    body: Optional[int]
+    pclass: Optional[int] = None
+    name: Optional[str] = None
+    sex: Optional[str] = None
+    age: Optional[float] = None
+    sibsp: Optional[int] = None
+    parch: Optional[int] = None
+    ticket: Optional[int] = None
+    fare: Optional[float] = None
+    cabin: Optional[str] = None
+    embarked: Optional[str] = None
+    boat: Optional[Union[str, int]] = None
+    body: Optional[int] = None
+    title: Optional[str] = None
     # TODO: rename home.dest, can get away with it now as it is not used
 
 
