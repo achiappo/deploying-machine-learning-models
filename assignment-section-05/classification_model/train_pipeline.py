@@ -14,16 +14,16 @@ def run_training() -> None:
     """
 
     # read training data
-    data = load_dataset(file_name=config.app_config.raw_data_file)
+    data = load_dataset(file_name=config.app_configs.raw_data_file)
 
     # divide train and test
     X_train, X_test, y_train, y_test = train_test_split(
-        data[config.model_config.features],  # predictors
-        data[config.model_config.target],
-        test_size=config.model_config.test_size,
+        data[config.model_configs.features],  # predictors
+        data[config.model_configs.target],
+        test_size=config.model_configs.test_size,
         # we are setting the random seed here
         # for reproducibility
-        random_state=config.model_config.random_state,
+        random_state=config.model_configs.random_state,
     )
 
     # fit model

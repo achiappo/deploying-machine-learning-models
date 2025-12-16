@@ -1,5 +1,5 @@
 # Package Overview
-package_name: regression_model
+package_name: classification_model
 
 # Data Files
 raw_data_file: raw.csv
@@ -49,3 +49,6 @@ categorical_vars:
 
 cabin_vars:
   - cabin
+
+# regularization strength in Logistic Regression
+reg_strength_lg: 0.0005

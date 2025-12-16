@@ -4,7 +4,7 @@ from sklearn.base import BaseEstimator, TransformerMixin
 class ExtractLetterTransformer(BaseEstimator, TransformerMixin):
     # Extract first letter of variable
 
-    def __init__(self, variables):
+    def __init__(self, variables=[]):
 
         if not isinstance(variables, list):
             raise ValueError("variables should be a list")
